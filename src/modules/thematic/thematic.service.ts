@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateThematicDto } from './dto/create-thematic.dto';
 import { UpdateThematicDto } from './dto/update-thematic.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -29,7 +29,7 @@ export class ThematicService {
     });
 
     if (!thematic) {
-      throw new Error(kNotFoundError);
+      throw new NotFoundException(kNotFoundError);
     }
 
     return thematic;
@@ -39,7 +39,7 @@ export class ThematicService {
     const thematic = await this.findOne(id);
 
     if (!thematic) {
-      throw new Error(kNotFoundError);
+      throw new NotFoundException(kNotFoundError);
     }
 
     Object.assign(thematic, updatedThematic);
@@ -52,13 +52,13 @@ export class ThematicService {
     const thematic = await this.findOne(id);
 
     if (!thematic) {
-      throw new Error(kNotFoundError);
+      throw new NotFoundException(kNotFoundError);
     }
 
     const removed = await this.thematicRepository.remove(thematic);
 
     if (!removed) {
-      throw new Error(kNotFoundError);
+      throw new NotFoundException(kNotFoundError);
     }
 
     return null;
