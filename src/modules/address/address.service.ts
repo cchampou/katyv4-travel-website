@@ -23,6 +23,7 @@ export class AddressService {
 
   async findOne(id: number) {
     const address = await this.addressRepository.findOneBy({ id });
+    if (!address) throw new NotFoundException(`Address #${id} not found`);
 
     return address;
   }
