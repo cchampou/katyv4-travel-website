@@ -8,4 +8,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=travel
     volumes:
-      - ./pg-data:/var/lib/postgresql/data
+      - pg-data:/var/lib/postgresql/data
+
+volumes:
+  pg-data:

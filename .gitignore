@@ -36,5 +36,3 @@ lerna-debug.log*
 
 .env*.local
 tmp-changelog.md
-
-pg-data/
