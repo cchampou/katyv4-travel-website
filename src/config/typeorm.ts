@@ -13,7 +13,7 @@ const config: DataSourceOptions = {
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
   entities: ['**/*.entity.ts'],
-  migrations: ['**/migrations/*.ts'],
+  migrations: ['**/migrations/*-migration.ts'],
   synchronize: true,
 };
 
