@@ -1,1 +1,11 @@
-export class CreateCityDto {}
+import { IsNotEmpty, IsString } from 'class-validator';
+
+export class CreateCityDto {
+  @IsNotEmpty()
+  @IsString()
+  name: string;
+
+  @IsNotEmpty()
+  @IsString()
+  zipCode: string;
+}
