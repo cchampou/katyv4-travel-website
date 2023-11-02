@@ -19,6 +19,11 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node ./node_modules/typeorm/cli",
+    "migration:run": "npm run typeorm migration:run -- -d ./src/config/typeorm.ts",
+    "migration:generate": "npm run typeorm -- -d ./src/config/typeorm.ts migration:generate ./src/migrations/migration",
+    "migration:create": "npm run typeorm -- migration:create ./src/migrations/migration",
+    "migration:revert": "npm run typeorm -- -d ./src/config/typeorm.ts migration:revert",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -28,13 +33,17 @@
     "@nestjs/passport": "10.0.2",
     "@nestjs/platform-fastify": "10.2.7",
     "@nestjs/swagger": "7.1.13",
+    "@nestjs/typeorm": "10.0.0",
     "axios": "1.3.4",
     "class-transformer": "0.5.1",
     "class-validator": "0.14.0",
     "cors": "2.8.5",
+    "dotenv": "16.3.1",
     "fastify": "4.23.2",
+    "pg": "8.11.3",
     "reflect-metadata": "0.1.13",
-    "rxjs": "7.8.1"
+    "rxjs": "7.8.1",
+    "typeorm": "0.3.17"
   },
   "devDependencies": {
     "@commitlint/cli": "17.4.4",
