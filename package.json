@@ -1,8 +1,8 @@
 {
-  "name": "nest-starter",
-  "version": "0.2.0-beta.6",
-  "description": "",
-  "author": "",
+  "name": "japan",
+  "version": "0.0.0-dev",
+  "description": "Backend for Katy_v4's Japan tourism website",
+  "author": "Katy's backend Team",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
