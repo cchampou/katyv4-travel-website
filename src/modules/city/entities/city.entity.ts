@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm';
+import { Country } from '../../country/entities/country.entity';
 
 @Entity()
 export class City {
@@ -7,4 +8,7 @@ export class City {
 
   @Column()
   name: string;
+
+  @ManyToOne(() => Country, (country) => country.cities)
+  country: Relation<Country>;
 }
