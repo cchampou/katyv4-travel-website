@@ -7,7 +7,4 @@ export class City {
 
   @Column()
   name: string;
-
-  @Column()
-  zipCode: string;
 }

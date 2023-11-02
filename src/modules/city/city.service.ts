@@ -31,7 +31,6 @@ export class CityService {
   async update(id: number, updateCityDto: UpdateCityDto) {
     const city = await this.findOne(id);
     city.name = updateCityDto.name;
-    city.zipCode = updateCityDto.zipCode;
     await this.cityRepository.save(city);
 
     return city;

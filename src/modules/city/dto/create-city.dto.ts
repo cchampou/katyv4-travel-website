@@ -4,8 +4,4 @@ export class CreateCityDto {
   @IsNotEmpty()
   @IsString()
   name: string;
-
-  @IsNotEmpty()
-  @IsString()
-  zipCode: string;
 }
