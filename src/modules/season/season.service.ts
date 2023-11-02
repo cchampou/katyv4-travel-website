@@ -1,11 +1,11 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Season } from './entities/season.entity';
 import { CreateSeasonDto } from './dto/create-season.dto';
 import { UpdateSeasonDto } from './dto/update-season.dto';
 
-const kNotFoundError = 'Unable to find the given thematic';
+const kNotFoundError = 'Unable to find the given season';
 
 @Injectable()
 export class SeasonService {
@@ -29,7 +29,7 @@ export class SeasonService {
     });
 
     if (!season) {
-      throw new BadRequestException(kNotFoundError);
+      throw new NotFoundException(kNotFoundError);
     }
 
     return season;
@@ -39,7 +39,7 @@ export class SeasonService {
     const season = await this.findOne(id);
 
     if (!season) {
-      throw new BadRequestException(kNotFoundError);
+      throw new NotFoundException(kNotFoundError);
     }
 
     Object.assign(season, updatedSeason);
@@ -52,7 +52,7 @@ export class SeasonService {
     const season = await this.findOne(id);
 
     if (!season) {
-      throw new BadRequestException(kNotFoundError);
+      throw new NotFoundException(kNotFoundError);
     }
 
     const removed = await this.seasonRepository.remove(season);
