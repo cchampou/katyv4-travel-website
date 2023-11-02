@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { HealthModule } from './modules/health/health.module';
 import { LoggerModule } from './modules/logger/logger.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CountryModule } from './modules/country/country.module';
 import typeorm from './config/typeorm';
 
 @Module({
@@ -14,10 +15,15 @@ import typeorm from './config/typeorm';
     }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => configService.get('typeorm'),
+      useFactory: async (configService: ConfigService) => ({
+        ...configService.get('typeorm'),
+        entities: ['dist/**/*.entity.js'],
+        migrations: ['dist/**/migrations/*-migration.js'],
+      }),
     }),
     HealthModule,
     LoggerModule,
+    CountryModule,
   ],
 })
 export class AppModule {}
