@@ -5,6 +5,7 @@ import { LoggerModule } from './modules/logger/logger.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CountryModule } from './modules/country/country.module';
 import { ActivityModule } from './modules/activity/activity.module';
+import { CityModule } from './modules/city/city.module';
 import typeorm from './config/typeorm';
 
 @Module({
@@ -26,6 +27,7 @@ import typeorm from './config/typeorm';
     LoggerModule,
     CountryModule,
     ActivityModule,
+    CityModule,
   ],
 })
 export class AppModule {}
