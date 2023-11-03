@@ -4,14 +4,10 @@ import { UpdateCityDto } from './dto/update-city.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { City } from './entities/city.entity';
 import { Repository } from 'typeorm';
-import { Country } from '../country/entities/country.entity';
 
 @Injectable()
 export class CityService {
-  constructor(
-    @InjectRepository(City) private cityRepository: Repository<City>,
-    @InjectRepository(Country) private countryRepository: Repository<Country>,
-  ) {}
+  constructor(@InjectRepository(City) private cityRepository: Repository<City>) {}
   async create(createCityDto: CreateCityDto) {
     const createdCity = this.cityRepository.create(createCityDto);
     await this.cityRepository.save(createdCity);

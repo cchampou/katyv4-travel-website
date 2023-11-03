@@ -8,5 +8,5 @@ export class CreateCityDto {
 
   @IsObject()
   @IsOptional()
-  country: Partial<Country>;
+  country: Pick<Country, 'id'>;
 }
