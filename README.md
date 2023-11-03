@@ -1,8 +1,8 @@
 # Backend for Katy_v4's Japan tourism website
 
-## Install dependencies
+## Installing Corepack for Package Manager Management
 
-First, enable corepack (this will manage package manager for you):
+To simplify package manager management, you can use Corepack. Here's how to enable Corepack:
 
 ```bash
 corepack enable
@@ -10,7 +10,15 @@ corepack enable
 
 You can also use [Volta](https://volta.sh/) to manage node and package manager versions
 
-Then, install packages:
+## Installing Packages
+
+After setting up Corepack or Volta, you can install the necessary packages for your project using pnpm. If you haven't installed pnpm yet, you can do so with npm. Here's how:
+
+```bash
+npm install -g pnpm
+```
+
+Next, you can install the required packages using pnpm:
 
 ```bash
 pnpm install
