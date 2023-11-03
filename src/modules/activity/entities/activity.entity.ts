@@ -5,14 +5,9 @@ export class Activity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    unique: true,
-  })
+  @Column()
   name: string;
 
-  @Column('text', { nullable: false })
+  @Column()
   description: string;
-
-  @Column('number', { nullable: false })
-  address_id: number;
 }
