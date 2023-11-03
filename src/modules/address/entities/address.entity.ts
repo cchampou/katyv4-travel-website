@@ -6,10 +6,10 @@ export class Address {
   id: number;
 
   @Column()
-  addressLine1: string;
+  street: string;
 
   @Column()
-  addressLine2: string;
+  complement: string;
 
   @Column()
   zipCode: string;
