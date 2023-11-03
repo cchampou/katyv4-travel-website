@@ -1,12 +1,13 @@
-import { IsNotEmpty, IsObject, IsOptional, IsString } from 'class-validator';
-import { Country } from '../../country/entities/country.entity';
+import { Type } from 'class-transformer';
+import { IsNotEmpty, IsString, ValidateNested } from 'class-validator';
+import { EntityId } from '../../../validations/common';
 
 export class CreateCityDto {
   @IsNotEmpty()
   @IsString()
   name: string;
 
-  @IsObject()
-  @IsOptional()
-  country: Pick<Country, 'id'>;
+  @ValidateNested()
+  @Type(() => EntityId)
+  country: EntityId;
 }
