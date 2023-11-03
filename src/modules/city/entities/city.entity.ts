@@ -9,6 +9,8 @@ export class City {
   @Column()
   name: string;
 
-  @ManyToOne(() => Country, (country) => country.cities)
+  @ManyToOne(() => Country, (country) => country.cities, {
+    nullable: false,
+  })
   country: Relation<Country>;
 }
