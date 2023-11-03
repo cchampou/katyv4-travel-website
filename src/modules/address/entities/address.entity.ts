@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm';
+import { City } from '../../city/entities/city.entity';
 
 @Entity()
 export class Address {
@@ -23,4 +24,7 @@ export class Address {
     type: 'float8',
   })
   longitude: number;
+
+  @ManyToOne(() => City, (city) => city.addresses)
+  city: Relation<City>;
 }
