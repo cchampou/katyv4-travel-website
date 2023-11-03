@@ -12,7 +12,7 @@ You can also use [Volta](https://volta.sh/) to manage node and package manager v
 
 ## Installing Packages
 
-After setting up Corepack or Volta, you can install the necessary packages for your project using pnpm. If you haven't installed pnpm yet, you can do so with npm. Here's how:
+You can install the necessary packages for your project using pnpm. If you haven't installed pnpm yet, you can do so with npm. Here's how:
 
 ```bash
 npm install -g pnpm
