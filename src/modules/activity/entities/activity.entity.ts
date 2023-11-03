@@ -10,9 +10,9 @@ export class Activity {
   })
   name: string;
 
-  @Column()
+  @Column('text', { nullable: false })
   description: string;
 
-  @Column()
+  @Column('number', { nullable: false })
   address_id: number;
 }
