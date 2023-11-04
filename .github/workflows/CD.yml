@@ -1,0 +1,17 @@
+name: Continuous deployment
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build-image:
+    name: Build Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build Docker image
+        run: docker build -t cchampou/travel-guide .
+      - name: Push Docker image
+        run: docker push cchampou/travel-guide
