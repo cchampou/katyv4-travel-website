@@ -1,6 +1,6 @@
 import { IsNotEmpty, Matches, MaxLength, MinLength } from 'class-validator';
 
-export class AccountConnectionDto {
+export class LoginDto {
   @IsNotEmpty()
   @MinLength(6, {
     message:

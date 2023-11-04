@@ -6,14 +6,13 @@ import { AuthService } from './auth.service';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post()
   create(@Body() account: CreateAccountDto) {
     return this.authService.createAccount(account);
   }
 
   @Post('login')
   login(@Body() account: CreateAccountDto) {
-    return this.authService.validateAccount(account);
+    return this.authService.login(account);
   }
 
   @Get()
