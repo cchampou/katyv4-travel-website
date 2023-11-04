@@ -25,6 +25,6 @@ export class Address {
   })
   longitude: number;
 
-  @ManyToOne(() => City, (city) => city.addresses)
+  @ManyToOne(() => City, (city) => city.addresses, { nullable: false })
   city: Relation<City>;
 }
