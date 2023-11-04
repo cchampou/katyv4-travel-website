@@ -1,11 +1,13 @@
-import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+
+import { ActivityModule } from './modules/activity/activity.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { CityModule } from './modules/city/city.module';
+import { CountryModule } from './modules/country/country.module';
 import { HealthModule } from './modules/health/health.module';
 import { LoggerModule } from './modules/logger/logger.module';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CountryModule } from './modules/country/country.module';
-import { ActivityModule } from './modules/activity/activity.module';
-import { CityModule } from './modules/city/city.module';
 import typeorm from './config/typeorm';
 
 @Module({
@@ -28,6 +30,7 @@ import typeorm from './config/typeorm';
     CountryModule,
     ActivityModule,
     CityModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
