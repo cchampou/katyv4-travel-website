@@ -14,12 +14,17 @@ export class ActivityService {
   }
 
   findAll() {
-    return this.activityRepository.find();
+    return this.activityRepository.find({
+      relations: ['address', 'address.city', 'address.city.country'],
+    });
   }
 
   findOne(id: number) {
-    return this.activityRepository.findOneBy({
-      id,
+    return this.activityRepository.findOne({
+      where: {
+        id,
+      },
+      relations: ['address', 'address.city', 'address.city.country'],
     });
   }
 
