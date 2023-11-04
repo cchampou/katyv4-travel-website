@@ -15,7 +15,9 @@ export class CityService {
   }
 
   async findAll() {
-    const allCities = await this.cityRepository.find();
+    const allCities = await this.cityRepository.find({
+      relations: ['country'],
+    });
 
     return allCities;
   }
