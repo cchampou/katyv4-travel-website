@@ -9,9 +9,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class ActivityService {
   constructor(@InjectRepository(Activity) private activityRepository: Repository<Activity>) {}
   create(createActivityDto: CreateActivityDto) {
-    const created = this.activityRepository.create({
-      name: createActivityDto.name,
-    });
+    const created = this.activityRepository.create(createActivityDto);
     return this.activityRepository.save(created);
   }
 
