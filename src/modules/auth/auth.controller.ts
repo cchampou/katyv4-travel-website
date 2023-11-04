@@ -11,6 +11,11 @@ export class AuthController {
     return this.authService.createAccount(account);
   }
 
+  @Post('login')
+  login(@Body() account: CreateAccountDto) {
+    return this.authService.validateAccount(account);
+  }
+
   @Get()
   getAll() {
     return this.authService.getAllAccounts();
