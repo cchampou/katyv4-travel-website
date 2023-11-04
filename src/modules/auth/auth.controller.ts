@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { CreateAccountDto } from './dto/create-account.dto';
 import { AuthService } from './auth.service';
+import { RoleDto } from './dto/role.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -15,8 +16,23 @@ export class AuthController {
     return this.authService.login(account);
   }
 
+  @Post('account/:id/role')
+  addRole(@Param('id') id: string, @Body() role: RoleDto) {
+    return this.authService.addRole(+id, role);
+  }
+
+  @Delete('account/:id/role')
+  removeRole(@Param('id') id: string, @Body() role: RoleDto) {
+    return this.authService.removeRole(+id, role);
+  }
+
+  @Get('roles')
+  getRoles() {
+    return this.authService.getRoles();
+  }
+
   @Get()
-  getAll() {
-    return this.authService.getAllAccounts();
+  getAccounts() {
+    return this.authService.getAccounts();
   }
 }

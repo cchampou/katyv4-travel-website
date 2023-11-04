@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Account } from './entities/account.entity';
@@ -9,6 +9,8 @@ import { LoginDto } from './dto/login.dto';
 import { InvalidCredentials } from './errors/invalid-credentials';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './dto/jwt-payload.dto';
+import { Roles } from './entities/roles.entity';
+import { RoleDto } from './dto/role.dto';
 
 @Injectable()
 export class AuthService {
@@ -60,14 +62,48 @@ export class AuthService {
       throw new InvalidCredentials();
     }
 
-    const jwtPayload: JwtPayload = { id: matchedAccount.id };
+    const jwtPayload: JwtPayload = {
+      id: matchedAccount.id,
+      roles: matchedAccount.roles,
+    };
 
     return {
       token: this.jwtService.sign(jwtPayload, this.jwtOptions),
     };
   }
 
-  getAllAccounts() {
+  async addRole(accountId: number, roleDto: RoleDto) {
+    const role = roleDto.role as Roles;
+    const account = await this.accountRepository.findOneBy({ id: accountId });
+    const roleAlreadyExists = account && account.roles.includes(role);
+
+    if (!account || roleAlreadyExists) {
+      throw new BadRequestException();
+    }
+
+    account.roles.push(role);
+
+    return this.accountRepository.save(account);
+  }
+
+  async removeRole(accountId: number, roleDto: RoleDto) {
+    const role = roleDto.role as Roles;
+    const account = await this.accountRepository.findOneBy({ id: accountId });
+
+    if (!account) {
+      throw new BadRequestException();
+    }
+
+    account.roles = account.roles.filter((r) => r !== role);
+
+    return this.accountRepository.save(account);
+  }
+
+  getRoles(): Roles[] {
+    return Object.values(Roles);
+  }
+
+  getAccounts() {
     return this.accountRepository.find();
   }
 
