@@ -1,8 +1,8 @@
-FROM node:latest
+FROM node:20-alpine
 
 COPY . .
 
-RUN npm i -g pnpm
+RUN corepack enable
 
 RUN pnpm install
 
