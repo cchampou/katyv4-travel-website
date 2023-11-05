@@ -1,5 +1,6 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, Relation } from 'typeorm';
 import { City } from '../../city/entities/city.entity';
+import { Activity } from '../../activity/entities/activity.entity';
 
 @Entity()
 export class Address {
@@ -27,4 +28,7 @@ export class Address {
 
   @ManyToOne(() => City, (city) => city.addresses, { nullable: false })
   city: Relation<City>;
+
+  @OneToMany(() => Activity, (activity) => activity.address)
+  activities: Activity[];
 }
