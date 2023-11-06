@@ -8,6 +8,7 @@ import { ActivityModule } from './modules/activity/activity.module';
 import { CityModule } from './modules/city/city.module';
 import { AddressModule } from './modules/address/address.module';
 import typeorm from './config/typeorm';
+import { ThematicModule } from './modules/thematic/thematic.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import typeorm from './config/typeorm';
     ActivityModule,
     CityModule,
     AddressModule,
+    ThematicModule,
   ],
 })
 export class AppModule {}
