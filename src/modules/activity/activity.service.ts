@@ -15,7 +15,7 @@ export class ActivityService {
 
   findAll() {
     return this.activityRepository.find({
-      relations: ['address', 'address.city', 'address.city.country'],
+      relations: ['address', 'address.city', 'address.city.country', 'seasons'],
     });
   }
 
@@ -24,7 +24,7 @@ export class ActivityService {
       where: {
         id,
       },
-      relations: ['address', 'address.city', 'address.city.country'],
+      relations: ['address', 'address.city', 'address.city.country', 'seasons'],
     });
   }
 

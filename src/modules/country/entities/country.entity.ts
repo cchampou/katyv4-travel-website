@@ -12,5 +12,5 @@ export class Country {
   name: string;
 
   @OneToMany(() => City, (city) => city.country)
-  cities: Relation<City>[];
+  cities: Relation<City[]>;
 }
