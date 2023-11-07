@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Activity } from '../../activity/entities/activity.entity';
 
 @Entity()
 export class Season {
@@ -9,4 +10,7 @@ export class Season {
     unique: true,
   })
   name: string;
+
+  @ManyToMany(() => Activity, (activity) => activity.seasons)
+  activities: Activity[];
 }
