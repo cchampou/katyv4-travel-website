@@ -30,5 +30,5 @@ export class Address {
   city: Relation<City>;
 
   @OneToMany(() => Activity, (activity) => activity.address)
-  activities: Activity[];
+  activities: Relation<Activity[]>;
 }

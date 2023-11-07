@@ -24,7 +24,7 @@ export class Activity {
   @ManyToOne(() => Address, (address) => address.activities, { nullable: false })
   address: Relation<Address>;
 
-  @ManyToMany(() => Season)
+  @ManyToMany(() => Season, (season) => season.activities)
   @JoinTable()
-  seasons: Season[];
+  seasons: Relation<Season[]>;
 }
