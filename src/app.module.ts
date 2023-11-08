@@ -11,7 +11,7 @@ import { ActivityModule } from './modules/activity/activity.module';
 import { CityModule } from './modules/city/city.module';
 import { AddressModule } from './modules/address/address.module';
 import { ThematicModule } from './modules/thematic/thematic.module';
-import { SeasonService } from './modules/season/season.service';
+import { SeasonModule } from './modules/season/season.module';
 
 @Module({
   imports: [
@@ -35,7 +35,7 @@ import { SeasonService } from './modules/season/season.service';
     CityModule,
     AddressModule,
     ThematicModule,
-    SeasonService,
+    SeasonModule,
   ],
 })
 export class AppModule {}
