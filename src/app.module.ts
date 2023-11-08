@@ -1,14 +1,17 @@
+import typeorm from './config/typeorm';
+
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { HealthModule } from './modules/health/health.module';
 import { LoggerModule } from './modules/logger/logger.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { CountryModule } from './modules/country/country.module';
 import { ActivityModule } from './modules/activity/activity.module';
 import { CityModule } from './modules/city/city.module';
 import { AddressModule } from './modules/address/address.module';
-import typeorm from './config/typeorm';
 import { ThematicModule } from './modules/thematic/thematic.module';
+import { SeasonModule } from './modules/season/season.module';
 
 @Module({
   imports: [
@@ -32,6 +35,7 @@ import { ThematicModule } from './modules/thematic/thematic.module';
     CityModule,
     AddressModule,
     ThematicModule,
+    SeasonModule,
   ],
 })
 export class AppModule {}
